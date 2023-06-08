@@ -1,0 +1,35 @@
+version: '3.7'
+services:
+  laravel:
+    build: 
+      args:
+        user: nahyun
+        uid: 501
+      context: ./
+      dockerfile: Dockerfile
+    image: laravel-app
+    restart: unless-stopped
+    working_dir: /var/www
+    ports:
+      - 8000:8000
+    volumes:
+      - ./:/var/www
+    networks:
+      - mynetwork
+      
+  db:
+    image: mysql:5.7
+    restart: unless-stopped
+    ports:
+      - 33061:3306
+    environment:
+      MYSQL_DATABASE: ${DB_DATABASE}
+      MYSQL_ROOT_PASSWORD: ${DB_PASSWORD}
+      MYSQL_PASSWORD: ${DB_PASSWORD}
+      MYSQL_USER: ${DB_USERNAME}
+    networks:
+      - mynetwork
+
+networks:
+  mynetwork:
+    driver: bridge
