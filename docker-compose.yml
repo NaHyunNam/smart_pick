@@ -9,7 +9,7 @@ services:
       dockerfile: Dockerfile
     image: laravel-app
     restart: unless-stopped
-    working_dir: /var/www
+    working_dir: /var/www/laravel
     ports:
       - 8000:8000
     volumes:
@@ -27,6 +27,19 @@ services:
       MYSQL_ROOT_PASSWORD: ${DB_PASSWORD}
       MYSQL_PASSWORD: ${DB_PASSWORD}
       MYSQL_USER: ${DB_USERNAME}
+    networks:
+      - mynetwork
+      
+  react:
+    build: 
+      context: ./smart_pick_front
+      dockerfile: Dockerfile.react
+    image: react-app
+    restart: unless-stopped
+    ports:
+      - 3000:3000
+    volumes:
+      - ./smart_pick_front:/app
     networks:
       - mynetwork
 

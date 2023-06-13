@@ -25,6 +25,8 @@ RUN useradd -G www-data,root -u $uid -d /home/$user -g $user $user
 RUN mkdir -p /home/$user/.composer && \
     chown -R $user:$user /home/$user
 
-WORKDIR /var/www
+WORKDIR /var/www/laravel
+
+CMD php artisan serve --host=0.0.0.0 --port=8000
 
 USER $user
