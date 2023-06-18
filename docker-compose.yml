@@ -32,14 +32,14 @@ services:
       
   react:
     build: 
-      context: ./smart_pick_front
+      context: ./front
       dockerfile: Dockerfile.react
     image: react-app
     restart: unless-stopped
     ports:
       - 3000:3000
     volumes:
-      - ./smart_pick_front:/app
+      - ./front:/app
     networks:
       - mynetwork
 
