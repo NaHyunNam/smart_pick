@@ -15,6 +15,20 @@ import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import Link from '@mui/material/Link';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
+import Header from './Header';
+
+const sections = [
+    { title: 'Technology', url: '#' },
+    { title: 'Design', url: '#' },
+    { title: 'Culture', url: '#' },
+    { title: 'Business', url: '#' },
+    { title: 'Politics', url: '#' },
+    { title: 'Opinion', url: '#' },
+    { title: 'Science', url: '#' },
+    { title: 'Health', url: '#' },
+    { title: 'Style', url: '#' },
+    { title: 'Travel', url: '#' },
+  ];
 
 function Copyright() {
   return (
@@ -46,6 +60,7 @@ export default function Album() {
           </Typography>
         </Toolbar>
       </AppBar>
+      <Header title="Blog" sections={sections} />
       <main>
         {/* Hero unit */}
         <Box
